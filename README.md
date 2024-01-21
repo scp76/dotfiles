@@ -45,11 +45,9 @@ mkdir --parents ~/{.config,.bashrc.d,.vim/colors,.ssh}
 ```
 # Add other packages as required
 stow --verbose --dir=$HOME/dotfiles sh bash vim tmux
-```
 
-Or:
+# Or:
 
-```
 cd ~/dotfiles
 stow --verbose sh bash vim tmux
 ```
@@ -72,27 +70,11 @@ stow --verbose --dir=$HOME/dotfiles --restow sh bash vim tmux
 stow --verbose --dir=$HOME/dotfiles --delete sh bash vim tmux
 ```
 
-### With install script (alternative if GNU stow isn't available)
+### With install script (alternative if stow isn't available)
 
 ```
 git clone https://github.com/bashbadger/dotfiles ~/dotfiles
 ~/dotfiles/install.sh
-```
-
-### Old method
-
-Previously I used a bare git repository, but having my entire home directory
-under version control felt awkward.
-
-Leaving this here for future reference.
-
-```
-alias gitdot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-git clone --bare git@github.com:bashbadger/dotfiles.git $HOME/.dotfiles
-# Delete or back up existing dotfiles if the `gitdot checkout` below fails.
-gitdot checkout
-gitdot config --local status.showUntrackedFiles no
-exec bash
 ```
 
 ## References
