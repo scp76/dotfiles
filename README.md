@@ -31,7 +31,8 @@ git clone https://github.com/bashbadger/dotfiles ~/dotfiles
 3. Back up existing dotfiles
 
 ```
-mkdir ~/.dotfiles.old && mv ~/{.bashrc,.bash_profile,.profile,.inputrc,.vimrc} $_
+mkdir ~/.dotfiles.old \
+  && mv ~/{.bashrc,.bash_profile,.profile,.inputrc,.vimrc} $_
 ```
 
 4. Create directories
