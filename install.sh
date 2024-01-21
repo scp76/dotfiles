@@ -13,6 +13,8 @@ mkdir ~/.dotfiles_old &>/dev/null \
 
 mkdir --parents ~/{.config,.bashrc.d,.vim/colors,.ssh}
 
+# tilde expansion ensures symlinks have absolute path.
+
 ## sh
 ln ~+/sh/.profile        ~/.profile
 ln ~+/sh/.inputrc        ~/.inputrc
