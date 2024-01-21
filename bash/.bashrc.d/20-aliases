@@ -1,0 +1,54 @@
+# ~/.bashrc.d/20-aliases: bash aliases.
+
+# Un-alias some annoying common aliases, if they're set.
+[ "$(type -t md)" = "alias" ] && unalias md
+
+# Aliases
+alias t='tree'
+alias h='history'
+alias v='vim'
+alias info='info --vi-keys'
+alias less='less --IGNORE-CASE'
+alias q='exit'
+alias g='git'
+alias glog='git log --oneline --all --graph'
+alias gls='git ls-files'
+alias newsboat='newsboat -r'
+alias m='man'
+alias ll='ls -lhF'
+alias la='ls -A'
+alias l='ls'
+alias ls='ls --width 80 --color=auto --classify'
+alias lss='ls'
+alias lls='ls'
+alias sll='ls'
+alias rm='rm -I --verbose'
+#alias dirs='dirs -v'
+alias gd='pushd'
+alias pd='popd'
+alias slurp='pushd - && pushd'
+alias tres='tresorit-cli'
+[ -x "$(command -v bat)" ] && alias cat='bat --style=plain,header'
+[ -x "$(command -v batcat)" ] && alias cat='batcat --style=plain,header'
+alias ping='ping -c3'
+alias getip='curl icanhazip.com'
+alias stow='stow --verbose'
+
+## tmux alises
+alias tl='tmux list-sessions'
+alias tls='tmux list-sessions'
+alias ta='tmux attach -t'
+alias tn='tmux new-session\; new-window\; new-window'
+alias tk='tmux kill-session -t'
+alias tka='tmux kill-server'
+
+## Docker aliases
+alias dockers='docker'
+alias dps='docker ps --all --format "table {{.Names}}\t{{.Status}}"'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+alias dcr='docker compose restart'
+alias dcp='docker compose pull'
+alias dsp='docker system prune'
+
+# vim: filetype=sh

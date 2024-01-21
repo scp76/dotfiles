@@ -1,0 +1,41 @@
+# ~/.inputrc: GNU readline library configuration.
+
+$include /etc/inputrc
+
+# Max columns to display completions at.
+set completion-display-width 100
+
+# Make completions case insensitive.
+set completion-ignore-case on
+
+# List matches immediately instead of ringing the bell.
+set show-all-if-ambiguous on
+
+# Show extra file information when completing, like `ls -F` does.
+set visible-stats on
+
+# Enable completion coloring.
+set colored-completion-prefix on
+set colored-stats on
+
+# Treat hyphen and underscores as equivalent.
+set completion-map-case on
+
+# The number of completions to display without prompt; when exceeded a
+# prompt-to-display will appear.
+set completion-query-items 200
+
+# Automatically add slash to the end of symlinked directories when completing.
+set mark-symlinked-directories on
+
+# Turn off the completions pager.
+set page-completions off
+
+# Immediately display completion matches.
+set show-all-if-ambiguous on
+
+# Smartly complete items when the cursor is not at the end of the line.
+set skip-completed-text on
+
+# Don't automatically match files beginning with dot.
+set match-hidden-files off

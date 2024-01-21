@@ -1,0 +1,95 @@
+# ~/.bashrc.d/30-functions: bash functions.
+
+qkfind() { # Quickly find files in $PWD
+    [[ $# -eq 1 ]] || {
+    echo "Provide one argument"
+    return 1 ; }
+    find . -iname "*${1}*"
+}
+
+qkgrep() { # Quickly grep (recursively) in $PWD
+    [[ $# -eq 1 ]] || {
+    echo "Provide one argument"
+    return 1 ; }
+    grep_options=( \
+                   --ignore-case \
+                   --color \
+                   --recursive \
+                 )
+    string="$1"
+    printf "%sSearching for \"${string}\" in ${PWD}...\n\n"
+    grep "${grep_options[@]}" "$string"
+}
+
+ff() { # Fast find
+    # find "$HOME" -name ".*" -prune -o -print > $HOME/.ALLFILES
+    grep --ignore-case "$@" $HOME/.ALLFILES
+}
+
+cptmp() { # Create a temporary directory and copy any arguments in to it.
+    local tmp_dir
+    tmp_dir="$(mktemp --directory)"
+    [[ -n "$1" ]] \
+      && cp --recursive "$@" "$tmp_dir" \
+      && cd "$tmp_dir"
+}
+
+md() { # Render markdown in cli with glow
+    [[ -z $1 ]] && return 1
+    glow --pager "$1"
+}
+
+lkup() {
+    curl dict://dict.org/d:"${1}"
+}
+
+weather() {
+    curl --silent "https://wttr.in/${1:-Staines}?M" \
+      | grep -v Follow
+}
+
+sl() { # Save commands for later
+    local outfile=~/.saved_cmds.txt
+    printf '[%(%Y-%m-%d)T] ' >>$outfile
+    fc -ln -1 | sed 's/^\s*//' >>$outfile
+    echo Saved previous command to $outfile
+}
+
+slg() {
+    < ~/.saved_cmds.txt \
+      grep "$@"
+}
+
+yt-dlp() {
+    command yt-dlp \
+    --embed-thumbnail \
+    --merge-output-format mp4 \
+    "$@"
+}
+
+hrep() {
+    history | grep "$*"
+}
+
+grep_ips() {
+    # Add `-o` when invoking to only print IPs
+    # (regex isn't perfect, but good enough)
+    grep --extended-regexp '([[:digit:]]{1,3}\.){3}[[:digit:]]{1,3}' "$@"
+}
+
+shortprompt() {
+    # Minimal PS1
+    oldps1="$PS1"
+    PS1='$ '
+}
+
+longprompt() {
+    # Return to standard (long?) PS1
+    PS1="${oldps1:-[\u@\h \W]\$ }"
+}
+
+7zsplit() {
+   7z -v1g a -m0=Copy "${1}.7z" "$1"
+}
+
+# vim: filetype=sh

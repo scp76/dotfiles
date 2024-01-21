@@ -1,0 +1,34 @@
+# ~/.bashrc.d/10-prompt: bash prompt configuration.
+
+# Set hostname colour based on hash of hostname.
+function colour_hostname {
+  local number=$(
+    md5sum <<<"$HOSTNAME" \
+      | cut -c3-4 \
+      | xargs -i printf "%d\n" "0x{}" \
+      | awk '{print int($0/255.0*(37-30)+30)}'
+              )
+  printf '\[\e[%d;1m\]%s\[\e[m\]' "$number" "${HOSTNAME%%.*}"
+}
+
+# Set PS1 depending on what system I'm on.
+case "${HOSTNAME%%.*}" in
+  # Specific prompts:
+  # Standard prompt:
+  *) PS1="\u@$(colour_hostname):\w\$ "
+ ;;
+esac
+
+# Terminal titles in interactive shells, for terminals that support it.
+if [[ -n "$PS1" && -z $PROMPT_COMMAND && $TERM =~ xterm ]]; then
+    PROMPT_COMMAND='printf "\033]0;%s@%s: %s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
+fi
+
+# Trim long directory trees.
+PROMPT_DIRTRIM=3
+
+# Load Liquidprompt on systems that have it, but only in interactive shells.
+[[ -f ~/liquidprompt/liquidprompt && $- = *i* ]] \
+  && source ~/liquidprompt/liquidprompt
+
+# vim: filetype=sh

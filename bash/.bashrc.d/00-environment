@@ -1,0 +1,45 @@
+# ~/.bashrc.d/00-environment: bash environment configuration.
+
+## Shell options
+shopt -s lithist \
+         autocd \
+         cdspell \
+         direxpand \
+         dirspell \
+         histappend \
+         checkwinsize \
+         histverify \
+         nocaseglob \
+         no_empty_cmd_completion \
+         globstar
+
+## Make less more friendly for non-text input files.
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+## Source bash completion.
+if [ $OSTYPE = linux-gnu ]; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        source /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        source /etc/bash_completion
+    fi
+fi
+
+export TZ=Europe/London
+
+export HISTSIZE=99999
+export HISTFILESIZE=99999
+export HISTCONTROL=ignoreboth:erasedups
+export HISTTIMEFORMAT='%F %T '
+export HISTIGNORE='?:??:???'
+
+export MANWIDTH=100
+export VISUAL=vim
+export EDITOR=vim
+export SYSTEMD_EDITOR=vim
+export SYSTEMD_PAGER=
+export CDPATH="$HOME"
+
+export VAGRANT_DEFAULT_PROVIDER=libvirt
+
+# vim: filetype=sh

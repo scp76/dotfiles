@@ -1,0 +1,10 @@
+# ~/.bashrc.d/50-kube: k8s related configuration.
+
+if type kubectl &>/dev/null; then
+    alias k='kubectl'
+    export dry='--dry-run=client -o yaml'
+    source <(kubectl completion bash)
+    complete -o default -F __start_kubectl k
+fi
+
+# vim: filetype=sh

@@ -1,0 +1,12 @@
+# ~/.gitconfig: global git configuration.
+
+[user]
+        name = Scott Powell
+        email = scott@powell.sh
+[core]
+        editor = vim
+        pager =
+[init]
+        defaultbranch = main
+[pager]
+        log = false
