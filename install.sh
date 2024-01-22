@@ -12,13 +12,11 @@ mkdir ~/.dotfiles_old &>/dev/null \
 
 mkdir --parents ~/{.config,.bashrc.d,.vim/colors,.ssh}
 
-# tilde expansion ensures symlinks have absolute path.
+# Tilde expansion ensures symlinks have absolute path.
 
-## sh
+## Shell configuration
 ln ~+/.profile      ~/.profile
 ln ~+/.inputrc      ~/.inputrc
-
-## bash
 ln ~+/.bashrc       ~/.bashrc
 ln ~+/.bash_profile ~/.bash_profile
 
@@ -26,15 +24,13 @@ for bashrc in ~+/.bashrc.d/*; do
     ln "$bashrc"    ~/.bashrc.d
 done
 
-## git
-ln ~+/.gitconfig    ~/.gitconfig
-
-## tmux
-ln ~+/.tmux.conf    ~/.tmux.conf
-
-## vim
+## Vim
 ln ~+/.vimrc        ~/.vimrc
 
 for vimcolor in ~+/.vim/colors/*; do
     ln "$vimcolor"  ~/.vim/colors
 done
+
+## Others
+ln ~+/.gitconfig    ~/.gitconfig
+ln ~+/.tmux.conf    ~/.tmux.conf
