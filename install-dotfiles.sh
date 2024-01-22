@@ -10,7 +10,7 @@ function ln {
 mkdir ~/.dotfiles_old &>/dev/null \
   && mv --verbose ~/{.bashrc,.bash_profile,.profile,.inputrc,.vimrc} "$_" 2>/dev/null
 
-mkdir --parents ~/{.config,.bashrc.d,.vim/colors,.ssh}
+mkdir --parents ~/{.config,.bashrc.d,.vim/colors,.ssh/config.d}
 
 # Tilde expansion ensures symlinks have absolute path.
 

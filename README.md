@@ -16,5 +16,5 @@ This repository contains my personal dotfiles.
 
 ```
 git clone https://github.com/bashbadger/dotfiles ~/dotfiles && cd "$_"
-./install.sh
+./install-dotfiles.sh
 ```
