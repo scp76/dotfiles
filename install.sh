@@ -15,26 +15,26 @@ mkdir --parents ~/{.config,.bashrc.d,.vim/colors,.ssh}
 # tilde expansion ensures symlinks have absolute path.
 
 ## sh
-ln ~+/.profile        ~/.profile
-ln ~+/.inputrc        ~/.inputrc
+ln ~+/.profile      ~/.profile
+ln ~+/.inputrc      ~/.inputrc
 
 ## bash
 ln ~+/.bashrc       ~/.bashrc
 ln ~+/.bash_profile ~/.bash_profile
 
 for bashrc in ~+/.bashrc.d/*; do
-    ln "$bashrc"         ~/.bashrc.d
+    ln "$bashrc"    ~/.bashrc.d
 done
 
 ## git
-ln ~+/.gitconfig     ~/.gitconfig
+ln ~+/.gitconfig    ~/.gitconfig
 
 ## tmux
 ln ~+/.tmux.conf    ~/.tmux.conf
 
 ## vim
-ln ~+/.vimrc         ~/.vimrc
+ln ~+/.vimrc        ~/.vimrc
 
 for vimcolor in ~+/.vim/colors/*; do
-    ln "$vimcolor"       ~/.vim/colors
+    ln "$vimcolor"  ~/.vim/colors
 done
