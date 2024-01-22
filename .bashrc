@@ -15,6 +15,11 @@ if [ -d "${HOME}/.bashrc.d" ]; then
 done fi
 unset rc
 
+# Source private bashrc file.
+if [ -f "${HOME}/.bashrc_local" ]; then
+    source "${HOME}/.bashrc_local"
+fi
+
 # Source host specific bashrc file.
 if [ -f "${HOME}/.bashrc_${HOSTNAME%%.*}" ]; then
     source "${HOME}/.bashrc_${HOSTNAME%%.*}"

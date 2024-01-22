@@ -5,37 +5,36 @@ function ln {
     command ln --verbose --symbolic --force "$@"
 }
 
-git clone https://github.com/bashbadger/dotfiles ~/dotfiles
-cd ~/dotfiles || exit 1
+[[ $PWD == "$HOME/dotfiles" ]] || exit 1
 
 mkdir ~/.dotfiles_old &>/dev/null \
-  && mv ~/{.bashrc,.bash_profile,.profile,.inputrc,.vimrc} "$_"
+  && mv --verbose ~/{.bashrc,.bash_profile,.profile,.inputrc,.vimrc} "$_" 2>/dev/null
 
 mkdir --parents ~/{.config,.bashrc.d,.vim/colors,.ssh}
 
 # tilde expansion ensures symlinks have absolute path.
 
 ## sh
-ln ~+/sh/.profile        ~/.profile
-ln ~+/sh/.inputrc        ~/.inputrc
+ln ~+/.profile        ~/.profile
+ln ~+/.inputrc        ~/.inputrc
 
 ## bash
-ln ~+/bash/.bashrc       ~/.bashrc
-ln ~+/bash/.bash_profile ~/.bash_profile
+ln ~+/.bashrc       ~/.bashrc
+ln ~+/.bash_profile ~/.bash_profile
 
-for bashrc in ~+/bash/.bashrc.d/*; do
+for bashrc in ~+/.bashrc.d/*; do
     ln "$bashrc"         ~/.bashrc.d
 done
 
 ## git
-ln ~+/git/.gitconfig     ~/.gitconfig
+ln ~+/.gitconfig     ~/.gitconfig
 
 ## tmux
-ln ~+/tmux/.tmux.conf    ~/.tmux.conf
+ln ~+/.tmux.conf    ~/.tmux.conf
 
 ## vim
-ln ~+/vim/.vimrc         ~/.vimrc
+ln ~+/.vimrc         ~/.vimrc
 
-for vimcolor in ~+/vim/.vim/colors/*; do
+for vimcolor in ~+/.vim/colors/*; do
     ln "$vimcolor"       ~/.vim/colors
 done
