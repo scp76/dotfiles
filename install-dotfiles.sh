@@ -27,10 +27,6 @@ done
 ## Vim
 ln ~+/.vimrc        ~/.vimrc
 
-for vimcolor in ~+/.vim/colors/*; do
-    ln "$vimcolor"  ~/.vim/colors
-done
-
 ## Others
 ln ~+/.gitconfig    ~/.gitconfig
 ln ~+/.tmux.conf    ~/.tmux.conf
