@@ -8,7 +8,9 @@ function ln {
 [[ $PWD == "$HOME/dotfiles" ]] || exit 1
 
 mkdir ~/.dotfiles_old &>/dev/null \
-  && mv --verbose ~/{.bashrc,.bash_profile,.profile,.inputrc,.vimrc} "$_" 2>/dev/null
+  && mv --verbose \
+     ~/{.bashrc,.bash_profile,.profile,.inputrc,.vimrc,.ssh/config} \
+     "$_" 2>/dev/null
 
 mkdir --parents ~/{.config,.bashrc.d,.vim/colors,.ssh/config.d}
 
@@ -30,3 +32,4 @@ ln ~+/.vimrc        ~/.vimrc
 ## Others
 ln ~+/.gitconfig    ~/.gitconfig
 ln ~+/.tmux.conf    ~/.tmux.conf
+ln ~+/.ssh/config   ~/.ssh/config
