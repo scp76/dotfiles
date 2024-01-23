@@ -80,9 +80,6 @@ silent! colorscheme retrobox
 set background=dark
 syntax on
 
-"highlight ColorColumn ctermbg=magenta guibg=green
-"call matchadd('ColorColumn', '\%81v', 100)
-
 " Enable line wrapping for Markdown files
 autocmd FileType markdown setlocal textwidth=100 wrap
 " Fold markdown
