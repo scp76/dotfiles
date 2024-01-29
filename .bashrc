@@ -25,4 +25,4 @@ if [ -f "${HOME}/.bashrc_${HOSTNAME%%.*}" ]; then
     source "${HOME}/.bashrc_${HOSTNAME%%.*}"
 fi
 
-type fortune &>/dev/null && fortune -as
+# type fortune &>/dev/null && fortune -as
