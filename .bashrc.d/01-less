@@ -1,11 +1,11 @@
 # less options
-export LESS="IFRSXMJ"
+export LESS="IFRSMJ"
 
 # Summary:
 # -I: ignore case
 # -F: quit immediately if file fits on one screen
 # -R: enable coloured output
 # -S: truncate long lines
-# -X: don't clear screen on exit
+# -X: don't clear screen on exit # Not in use
 # -M: more verbose status line
-# -J: add status column on left, mark with search hits
+# -J: add status column on left, show search hits and marks
