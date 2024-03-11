@@ -33,3 +33,4 @@ ln ~+/.vimrc        ~/.vimrc
 ln ~+/.gitconfig    ~/.gitconfig
 ln ~+/.tmux.conf    ~/.tmux.conf
 ln ~+/.ssh/config   ~/.ssh/config
+ln ~+/.lesskey      ~/.lesskey
