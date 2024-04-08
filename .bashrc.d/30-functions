@@ -34,6 +34,15 @@ cptmp() { # Create a temporary directory and copy any arguments in to it.
       && cd "$tmp_dir"
 }
 
+backup() {
+  if [ -z "$1" ]; then
+    echo "Usage: backup <file>"
+    return 1
+  fi
+
+  cp --verbose "$1" "$1.bak"
+}
+
 md() { # Render markdown in cli with glow
     [[ -z $1 ]] && return 1
     glow --pager "$1"

@@ -27,6 +27,7 @@ set wildmode=longest,list
 set noerrorbells
 set hidden
 set ruler
+set cursorline
 set tabpagemax=50
 set ttimeout
 set ttimeoutlen=50
