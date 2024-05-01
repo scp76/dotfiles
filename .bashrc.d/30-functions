@@ -45,7 +45,7 @@ backup() {
 
 md() { # Render markdown in cli with glow
     [[ -z $1 ]] && return 1
-    glow --pager "$1"
+    glow --pager --width 100 "$1"
 }
 
 lkup() {

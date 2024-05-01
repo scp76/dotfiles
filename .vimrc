@@ -36,7 +36,7 @@ set smarttab
 "set spell spelllang=en_gb
 let g:markdown_fenced_languages = ['html', 'python', 'ruby', 'vim', 'bash']
 "Limit markdown to 100 column width
-au BufRead,BufNewFile *.md setlocal textwidth=100
+au BufRead,BufNewFile *.md setlocal textwidth=80
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
@@ -76,9 +76,9 @@ endif
 set termguicolors
 silent! colorscheme slate
 silent! colorscheme skull
-silent! colorscheme quiet
 silent! colorscheme retrobox
-set background=dark
+silent! colorscheme quiet
+set background=light
 syntax on
 
 " Enable line wrapping for Markdown files

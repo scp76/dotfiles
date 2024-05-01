@@ -10,3 +10,5 @@
         defaultbranch = main
 [pager]
         log = false
+[color]
+	ui = auto
