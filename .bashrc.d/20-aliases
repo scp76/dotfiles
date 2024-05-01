@@ -28,13 +28,13 @@ alias gd='pushd'
 alias pd='popd'
 alias slurp='pushd - && pushd'
 alias tres='tresorit-cli'
-[ -x "$(command -v bat)" ] && alias cat='bat --theme=base16 --style=plain,header'
-[ -x "$(command -v batcat)" ] && alias cat='batcat --theme=base16 --style=plain,header'
+[ -x "$(command -v bat)" ] && alias cat='bat'
+[ -x "$(command -v batcat)" ] && alias cat='batcat'
 alias ping='ping -c3'
 alias getip='curl icanhazip.com'
 alias stow='stow --verbose'
 
-## tmux alises
+## tmux aliases
 alias tl='tmux list-sessions'
 alias tls='tmux list-sessions'
 alias ta='tmux attach -t'

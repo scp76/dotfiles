@@ -42,4 +42,6 @@ export CDPATH="$HOME"
 
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 
+export BAT_CONFIG_PATH="$HOME/.config/bat.conf"
+
 # vim: filetype=sh
