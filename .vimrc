@@ -78,7 +78,7 @@ silent! colorscheme slate
 silent! colorscheme skull
 silent! colorscheme retrobox
 silent! colorscheme quiet
-set background=light
+set background=dark
 syntax on
 
 " Enable line wrapping for Markdown files
