@@ -12,7 +12,8 @@ mkdir ~/.dotfiles_old &>/dev/null \
      ~/{.bashrc,.bash_profile,.profile,.inputrc,.vimrc,.ssh/config} \
      "$_" 2>/dev/null
 
-mkdir --parents ~/{.config,.bashrc.d,.vim/colors,.ssh/config.d}
+# May need to break this out into more readable lines later
+mkdir --parents ~/{.config,.bashrc.d,.vim/colors,.vim/syntax,.vim/pack/scott/start,.ssh/config.d}
 
 # Tilde expansion ensures symlinks have absolute path.
 
@@ -28,6 +29,14 @@ done
 
 ## Vim
 ln ~+/.vimrc        ~/.vimrc
+
+for vimrc in ~+/.vim/*.vim; do
+    ln "$vimrc"     ~/.vim
+done
+
+for vimsyntax in ~+/.vim/syntax/*; do
+    ln "$vimsyntax" ~/.vim/syntax
+done
 
 ## Others
 ln ~+/.gitconfig    ~/.gitconfig
