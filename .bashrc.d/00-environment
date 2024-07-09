@@ -41,6 +41,7 @@ export SYSTEMD_PAGER=
 export CDPATH="$HOME"
 
 export VAGRANT_DEFAULT_PROVIDER=libvirt
+export VAGRANT_CHECKPOINT_DISABLE=1
 
 export BAT_CONFIG_PATH="$HOME/.config/bat.conf"
 
