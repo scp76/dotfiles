@@ -1,21 +1,10 @@
 # ~/.bashrc.d/10-prompt: bash prompt configuration.
 
-# Set hostname colour based on hash of hostname.
-function colour_hostname {
-  local number=$(
-    md5sum <<<"$HOSTNAME" \
-      | cut -c3-4 \
-      | xargs -i printf "%d\n" "0x{}" \
-      | awk '{print int($0/255.0*(37-30)+30)}'
-              )
-  printf '\[\e[%d;1m\]%s\[\e[m\]' "$number" "${HOSTNAME%%.*}"
-}
-
 # Set PS1 depending on what system I'm on.
 case "${HOSTNAME%%.*}" in
   # Specific prompts:
   # Standard prompt:
-  *) PS1="\u@$(colour_hostname):\w\$ "
+  *) PS1="\[\033[0;90m\]\u@\h\[\033[0m\]:\[\033[0;32m\]\w\[\033[0m\]\$ "
  ;;
 esac
 
