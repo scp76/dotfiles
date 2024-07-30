@@ -1,5 +1,12 @@
 # ~/.bashrc.d/30-functions: bash functions.
 
+ssh_until() { # SSH repeatedly until a host becomes available
+    until ssh "$@"; do
+      sleep 30
+      date +%T
+    done
+}
+
 qkfind() { # Quickly find files in $PWD
     [[ $# -eq 1 ]] || {
     echo "Provide one argument"
