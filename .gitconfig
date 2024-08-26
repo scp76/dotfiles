@@ -6,9 +6,10 @@
 [core]
         editor = vim
         pager =
+        excludesFile = ~/.gitignore
 [init]
         defaultbranch = main
 [pager]
         log = false
 [color]
-	ui = auto
+        ui = auto
