@@ -4,3 +4,6 @@
 .ssh/*
 id_*
 .bashrc_*
+.git_pull.log
+todo.txt
+about.txt
