@@ -1,8 +1,8 @@
 # ~/.gitconfig: global git configuration.
 
 [user]
-        name = Scott Powell
-        email = scott@powell.sh
+	name = Scott Powell
+	email = scott@powell.sh
 [core]
         editor = vim
         pager =
