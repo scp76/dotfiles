@@ -13,6 +13,9 @@ shopt -s lithist \
          no_empty_cmd_completion \
          globstar
 
+# ls colours quiet theme
+export LS_COLORS="rs=0:di=1;30:ln=36:mh=00:pi=34:so=35:do=35:bd=35;40:cd=35;40:or=31:mi=31:su=1;30:sg=1;30:ca=30:tw=1;30:ow=1;30:st=1;30:ex=1;30"
+
 ## Make less more friendly for non-text input files.
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -44,5 +47,6 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 export VAGRANT_CHECKPOINT_DISABLE=1
 
 export BAT_CONFIG_PATH="$HOME/.config/bat.conf"
+
 
 # vim: filetype=sh

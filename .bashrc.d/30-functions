@@ -28,11 +28,6 @@ qkgrep() { # Quickly grep (recursively) in $PWD
     grep "${grep_options[@]}" "$string"
 }
 
-ff() { # Fast find
-    # find "$HOME" -name ".*" -prune -o -print > $HOME/.ALLFILES
-    grep --ignore-case "$@" $HOME/.ALLFILES
-}
-
 cptmp() { # Create a temporary directory and copy any arguments in to it.
     local tmp_dir
     tmp_dir="$(mktemp --directory)"
