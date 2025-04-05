@@ -15,6 +15,6 @@ This repository contains my personal dotfiles.
 ## Setting up on a new system
 
 ```
-git clone https://github.com/bashbadger/dotfiles ~/dotfiles && cd "$_"
+git clone https://github.com/scp76/dotfiles ~/dotfiles && cd "$_"
 ./install-dotfiles.sh
 ```
