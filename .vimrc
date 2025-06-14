@@ -36,7 +36,7 @@ set smarttab
 "set spell spelllang=en_gb
 let g:markdown_fenced_languages = ['html', 'python', 'ruby', 'vim', 'bash']
 "Limit markdown to 100 column width
-au BufRead,BufNewFile *.md setlocal textwidth=80
+au BufRead,BufNewFile *.md setlocal textwidth=100
 
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *

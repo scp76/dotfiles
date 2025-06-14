@@ -1,0 +1,18 @@
+# Bash history configuration
+
+# Allow history list to be unlimited.
+export HISTSIZE=-1
+# Allow history file to be unlimited.
+export HISTFILESIZE=-1
+
+# Ignore commands beginning with a space, and duplicates of the previous command.
+# Remove previous commands matching current one.
+export HISTCONTROL=ignoreboth:erasedups
+
+# Don't add 1, 2 or 3 letter commands to history
+export HISTIGNORE='?:??:???'
+
+# Timestamps
+export HISTTIMEFORMAT='%F %T '
+
+# vim: filetype=sh

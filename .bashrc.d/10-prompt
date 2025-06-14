@@ -1,20 +1,66 @@
 # ~/.bashrc.d/10-prompt: bash prompt configuration.
 
-# Set PS1 depending on what system I'm on.
-case "${HOSTNAME%%.*}" in
-  # Specific prompts:
-  # Standard prompt:
-  *) PS1="\[\033[0;90m\]\u@\h\[\033[0m\]:\[\033[0;32m\]\w\[\033[0m\]\$ "
- ;;
-esac
-
-# Terminal titles in interactive shells, for terminals that support it.
-if [[ -n "$PS1" && -z $PROMPT_COMMAND && $TERM =~ xterm ]]; then
-    PROMPT_COMMAND='printf "\033]0;%s@%s: %s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-fi
-
 # Trim long directory trees.
 PROMPT_DIRTRIM=3
+
+# Hostname MD5 hash-based coloured PS1.
+get_hostname_colour() {
+    local hostname="${HOSTNAME%%.*}"
+    local hash
+    hash=$(printf "%s" "$hostname" | md5sum | cut -c1-8)
+    hash=$((0x$hash))
+    # Define safe colours that work well on both light
+    # and dark backgrounds.
+    # Avoiding: black (30), white (37), magenta variants,
+    # and colours too close to common text
+    local safe_colours=(
+        31  # Red
+        32  # Green
+        33  # Yellow
+        34  # Blue
+        36  # Cyan
+        91  # Bright Red
+        92  # Bright Green
+        93  # Bright Yellow
+        94  # Bright Blue
+        96  # Bright Cyan
+    )
+    local colour_index=$(( hash % ${#safe_colours[@]} ))
+    local colour_code=${safe_colours[$colour_index]}
+    printf "\[\033[0;%dm\]" "$colour_code"
+}
+
+get_jobs_info() {
+    local job_count
+    job_count=$(jobs -r | wc -l)
+    if [[ $job_count -gt 0 ]]; then
+        printf "\[\033[0;33m\][%d&]\[\033[0m\]" "$job_count"
+    fi
+}
+
+# Set colour now to avoid hash on every prompt.
+if [[ -z "$HOSTNAME_COLOUR" ]]; then
+    HOSTNAME_COLOUR="$(get_hostname_colour)"
+fi
+
+build_hostname_ps1() {
+    local reset='\[\033[0m\]'
+    local path_bold='\[\033[1m\]'
+    local jobs_info="$(get_jobs_info)"
+    PS1="${HOSTNAME_COLOUR}\u@\h${reset}:${path_bold}\w${reset}${jobs_info}\$ "
+}
+
+
+if [[ -n "$PS1" ]]; then
+# Set PS1 depending on what system I'm on.
+    case "${HOSTNAME%%.*}" in
+      # Specific prompts:
+      # Standard prompt:
+      # (PROMPT_COMMAND necessary for job count updates)
+      *) PROMPT_COMMAND='build_hostname_ps1'
+     ;;
+    esac
+fi
 
 # Load Liquidprompt on systems that have it, but only in interactive shells.
 [[ -f ~/liquidprompt/liquidprompt && $- = *i* ]] \

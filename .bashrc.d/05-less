@@ -1,5 +1,5 @@
 # less options
-export LESS="iFRSMJQg --no-vbell --save-marks --use-color --status-line"
+export LESS="iFRSMJQg"
 
 # Summary:
 # -i: ignore case in search unless uppercase is used

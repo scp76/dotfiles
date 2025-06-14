@@ -3,8 +3,12 @@
 # If not running interactively, don't do anything.
 [ -z "$PS1" ] && return
 
-# Source global configuration file if it exists.
-if [ -f /etc/bashrc ]; then
+# Source global configuration file.
+## Debian uses /etc/bash.bashrc
+## RHEL uses /etc/bashrc
+if [ -f /etc/bash.bashrc ]; then
+    source /etc/bash.bashrc
+elif [ -f /etc/bashrc ]; then
     source /etc/bashrc
 fi
 
@@ -24,5 +28,3 @@ fi
 if [ -f "${HOME}/.bashrc_${HOSTNAME%%.*}" ]; then
     source "${HOME}/.bashrc_${HOSTNAME%%.*}"
 fi
-
-# type fortune &>/dev/null && fortune -as
