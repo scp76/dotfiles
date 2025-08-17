@@ -350,7 +350,7 @@
 # This can give each host a "color feel" to help distinguish them.
 # Type: bool
 # More information: https://liquidprompt.readthedocs.io/en/stable/config.html#LP_ENABLE_SSH_COLORS
-#LP_ENABLE_SSH_COLORS=0
+LP_ENABLE_SSH_COLORS=1
 
 # Check if the user has valid `sudo` credentials, and display an indicating
 # mark or color.
