@@ -39,8 +39,9 @@ for vimsyntax in ~+/.vim/syntax/*; do
 done
 
 ## Others
-ln ~+/.gitconfig    ~/.gitconfig
-ln ~+/.tmux.conf    ~/.tmux.conf
-ln ~+/.ssh/config   ~/.ssh/config
-ln ~+/.lesskey      ~/.lesskey
-ln ~+/bat.conf      ~/.config/bat.conf
+ln ~+/.gitconfig      ~/.gitconfig
+ln ~+/.tmux.conf      ~/.tmux.conf
+ln ~+/.ssh/config     ~/.ssh/config
+ln ~+/.lesskey        ~/.lesskey
+ln ~+/bat.conf        ~/.config/bat.conf
+ln ~+/.liquidpromptrc ~/.liquidpromptrc
