@@ -4,7 +4,12 @@
 PROMPT_DIRTRIM=3
 
 # Terminal titles
-PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
+if [[ -n "$SSH_CONNECTION" ]]; then
+    PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
+else
+    # No point including <user>@<host> if local
+    PROMPT_COMMAND='printf "\033]0;%s\007" "${PWD/#$HOME/\~}"'
+fi
 
 # PS1 (derived from Debian 13 default PS1)
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
