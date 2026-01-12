@@ -16,8 +16,14 @@ fi
 if [ -d "${HOME}/.bashrc.d" ]; then
     for rc in "${HOME}/.bashrc.d/"*; do
         source "$rc"
-done fi
+    done
+fi
 unset rc
+
+# Source synced bashrc file.
+if [ -f "${HOME}/.bashrc_sync" ]; then
+    source "${HOME}/.bashrc_sync"
+fi
 
 # Source private bashrc file.
 if [ -f "${HOME}/.bashrc_local" ]; then

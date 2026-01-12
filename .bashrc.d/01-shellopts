@@ -1,0 +1,14 @@
+## Shell options
+
+shopt -s lithist \
+         autocd \
+         cdspell \
+         direxpand \
+         dirspell \
+         histappend \
+         checkwinsize \
+         histverify \
+         nocaseglob \
+         no_empty_cmd_completion \
+         globstar
+

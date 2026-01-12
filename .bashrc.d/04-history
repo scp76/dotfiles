@@ -5,12 +5,12 @@ export HISTSIZE=-1
 # Allow history file to be unlimited.
 export HISTFILESIZE=-1
 
-# Ignore commands beginning with a space, and duplicates of the previous command.
+# Ignore commands beginning with a space.
 # Remove previous commands matching current one.
-export HISTCONTROL=ignoreboth:erasedups
+export HISTCONTROL='erasedups:ignorespace'
 
-# Don't add 1, 2 or 3 letter commands to history
-export HISTIGNORE='?:??:???'
+# Ignore uninteresting commands.
+export HISTIGNORE='ls:ll:history:pwd:clear:exit:bg:fg:jobs:git status'
 
 # Timestamps
 export HISTTIMEFORMAT='%F %T '

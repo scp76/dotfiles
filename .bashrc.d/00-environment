@@ -1,44 +1,16 @@
 # ~/.bashrc.d/00-environment: bash environment configuration.
 
-## Shell options
-shopt -s lithist \
-         autocd \
-         cdspell \
-         direxpand \
-         dirspell \
-         histappend \
-         checkwinsize \
-         histverify \
-         nocaseglob \
-         no_empty_cmd_completion \
-         globstar
-
-# ls colours quiet theme
-# export LS_COLORS="rs=0:di=1;30:ln=36:mh=00:pi=34:so=35:do=35:bd=35;40:cd=35;40:or=31:mi=31:su=1;30:sg=1;30:ca=30:tw=1;30:ow=1;30:st=1;30:ex=1;30"
-
-## Make less more friendly for non-text input files.
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-## Source bash completion.
-if [ $OSTYPE = linux-gnu ]; then
-    if [ -f /usr/share/bash-completion/bash_completion ]; then
-        source /usr/share/bash-completion/bash_completion
-    elif [ -f /etc/bash_completion ]; then
-        source /etc/bash_completion
-    fi
-fi
-
 export TZ=Europe/London
-
 export MANWIDTH=100
+
 export VISUAL=vim
 export EDITOR=vim
 export SYSTEMD_EDITOR=vim
-export SYSTEMD_PAGER=
 
-# '.' first to prefer targets in working directory.
-export CDPATH=".:$HOME"
+# Usually want the pager on for 'journalctl' these days.
+# export SYSTEMD_PAGER=
 
+export CDPATH="$HOME"
 export BAT_CONFIG_PATH="$HOME/.config/bat.conf"
 
 # vim: filetype=sh

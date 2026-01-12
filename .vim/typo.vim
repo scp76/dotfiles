@@ -1,4 +1,4 @@
-" abbreviations.vim: abbreviations.
+" typo.vim: abbreviations for typos.
 " iab restricts abbreviation to insert mode.
 
 " Typos

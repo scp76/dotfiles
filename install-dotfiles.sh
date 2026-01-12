@@ -1,47 +1,56 @@
 #!/usr/bin/env bash
-# Symlink dotfiles
+# Convenience script to copy dotfiles into place
 
-function ln {
-    command ln --verbose --symbolic --force "$@"
-}
+shopt -s nullglob
+
+BACKUP_DIR="${HOME}/.dotfiles_old"
 
 [[ $PWD == "$HOME/dotfiles" ]] || exit 1
 
-mkdir ~/.dotfiles_old &>/dev/null \
-  && mv --verbose \
-     ~/{.bashrc,.bash_profile,.profile,.inputrc,.vimrc,.ssh/config} \
-     "$_" 2>/dev/null
+function vcp {
+    cp --verbose "$@"
+}
 
-# May need to break this out into more readable lines later
-mkdir --parents ~/{.config,.bashrc.d,.vim/colors,.vim/syntax,.vim/pack/scott/start,.ssh/config.d}
+echo "# Backing up current dotfiles to ${BACKUP_DIR}:"
 
-# Tilde expansion ensures symlinks have absolute path.
+if [[ ! -d "$BACKUP_DIR" ]]; then
+   mkdir "$BACKUP_DIR" || exit 1
+fi
 
-## Shell configuration
-ln ~+/.profile      ~/.profile
-ln ~+/.inputrc      ~/.inputrc
-ln ~+/.bashrc       ~/.bashrc
-ln ~+/.bash_profile ~/.bash_profile
+mv --verbose \
+  ~/.profile \
+  ~/.inputrc \
+  ~/.bashrc \
+  ~/.bash_profile \
+  ~/.bash_logout \
+  ~/.vimrc \
+  ~/.ssh/config \
+    "$BACKUP_DIR" 2>/dev/null
 
-for bashrc in ~+/.bashrc.d/*; do
-    ln "$bashrc"    ~/.bashrc.d
-done
+mkdir --parents \
+  ~/.config \
+  ~/.bashrc.d \
+  ~/.vim/pack/scott/start \
+  ~/.ssh/config.d
 
-## Vim
-ln ~+/.vimrc        ~/.vimrc
+echo "# Installing dotfiles:"
 
-for vimrc in ~+/.vim/*.vim; do
-    ln "$vimrc"     ~/.vim
-done
+# Shell
+vcp .profile        ~/.profile
+vcp .inputrc        ~/.inputrc
+vcp .bashrc         ~/.bashrc
+vcp .bashrc.d/*     ~/.bashrc.d/
+vcp .bash_profile   ~/.bash_profile
+vcp .liquidpromptrc ~/.liquidpromptrc
 
-for vimsyntax in ~+/.vim/syntax/*; do
-    ln "$vimsyntax" ~/.vim/syntax
-done
+# Vim
+vcp .vimrc    ~/.vimrc
+vcp -r .vim/* ~/.vim/
 
-## Others
-ln ~+/.gitconfig      ~/.gitconfig
-ln ~+/.tmux.conf      ~/.tmux.conf
-ln ~+/.ssh/config     ~/.ssh/config
-ln ~+/.lesskey        ~/.lesskey
-ln ~+/bat.conf        ~/.config/bat.conf
-ln ~+/.liquidpromptrc ~/.liquidpromptrc
+# Git
+vcp .gitconfig ~/.gitconfig
+
+# Others
+vcp .tmux.conf  ~/.tmux.conf
+vcp .ssh/config ~/.ssh/config
+vcp .lesskey    ~/.lesskey

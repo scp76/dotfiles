@@ -1,0 +1,14 @@
+# Source bash completion.
+# RHEL-based distros do this in the system /etc/bashrc and /etc/profile.d/*
+# but Debian doesn't by default, so source here.
+# Safe to source completion scripts multiple times in any case.
+
+if [ $OSTYPE = linux-gnu ]; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        source /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        source /etc/bash_completion
+    fi
+fi
+
+# vim: filetype=sh

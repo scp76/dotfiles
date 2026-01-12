@@ -9,10 +9,8 @@ alias v='vim'
 alias info='info --vi-keys'
 alias q='exit'
 alias grep='grep --color=auto'
-alias newsboat='newsboat -r'
 alias m='man'
 alias rm='rm -I'
-alias stow='stow --verbose'
 
 # git
 # (Use proper git aliases where possible)
@@ -52,17 +50,18 @@ alias getipv6='curl -s -6 icanhazip.com'
 alias tl='tmux list-sessions'
 alias tls='tmux list-sessions'
 alias ta='tmux attach -t'
-alias tn='tmux new-session\; new-window\; new-window'
 alias tk='tmux kill-session -t'
 alias tka='tmux kill-server'
 
 # Docker
-alias dps='docker ps --all --format "table {{.Names}}\t{{.Status}}"'
-alias dcu='docker compose up -d'
-alias dcd='docker compose down'
-alias dcr='docker compose restart'
-alias dcp='docker compose pull'
-alias dsp='docker system prune'
+if command -v docker &> /dev/null; then
+    alias dps='docker ps --all --format "table {{.Names}}\t{{.Status}}"'
+    alias dcu='docker compose up -d'
+    alias dcd='docker compose down'
+    alias dcr='docker compose restart'
+    alias dcp='docker compose pull'
+    alias dsp='docker system prune'
+fi
 
 # Quick edits
 alias vimrc='${EDITOR:-vim} ~/.vimrc'

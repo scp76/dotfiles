@@ -73,14 +73,6 @@ slg() {
       grep "$@"
 }
 
-# Preferred yt-dlp options
-yt-dlp() {
-    command yt-dlp \
-    --embed-thumbnail \
-    --merge-output-format mp4 \
-    "$@"
-}
-
 # IP grep
 grep_ips() {
     # Add `-o` when invoking to only print IPs
@@ -97,20 +89,6 @@ shortprompt() {
 # Return to original prompt
 longprompt() {
     PS1="${oldps1:-[\u@\h \W]\$ }"
-}
-
-# Boot to Windows on dual-boot system
-bootwin () {
-    local win_entry=$(efibootmgr | grep -i "windows boot manager" | head -n1 | grep -o '^Boot[0-9A-F]\{4\}');
-    local boot_num=${win_entry#Boot}
-    if sudo efibootmgr --bootnext $boot_num >/dev/null; then
-        echo "Rebooting in 3 seconds... (Ctrl+C to cancel)"
-        sleep 3
-        reboot
-    else
-        echo "Error: Failed to set next boot entry" >&2
-        return 1
-    fi
 }
 
 # vim: filetype=sh

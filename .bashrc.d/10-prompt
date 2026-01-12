@@ -1,7 +1,7 @@
 # ~/.bashrc.d/10-prompt: bash prompt configuration.
 
 # Trim long directory trees.
-PROMPT_DIRTRIM=3
+# PROMPT_DIRTRIM=3
 
 # Terminal titles
 if [[ -n "$SSH_CONNECTION" ]]; then
@@ -11,10 +11,11 @@ else
     PROMPT_COMMAND='printf "\033]0;%s\007" "${PWD/#$HOME/\~}"'
 fi
 
-# PS1 (derived from Debian 13 default PS1)
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+# Debian 13 default PS1 for reference.
+# PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 # Load Liquidprompt on systems that have it, but only in interactive shells.
+# Note that this always needs to come after PROMPT_COMMAND.
 [[ -f ~/liquidprompt/liquidprompt && $- = *i* ]] \
   && source ~/liquidprompt/liquidprompt
 
